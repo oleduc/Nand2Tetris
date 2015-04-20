@@ -17,5 +17,18 @@ CHIP Mux {
       // Classical logic: (Sel ⊃ b) & (¬Sel ⊃ a)
       // Equivalent implication: (P ⊃ Q) ≡ ¬(P & ¬Q)
       // So: ¬(Sel & ¬b) & ¬(¬Sel & ¬a)
+      Not(in=a, out=notA);
+      Not(in=b, out=notB);
+      Not(in=sel, out=notSel);
 
+      // notAndSelNotB -> ¬(Sel & ¬b)
+      And(a=sel, b=notB, out=andSelNotB);
+      Not(in=andSelNotB, out=notAndSelNotB);
+
+      // notAndNotSelNotA -> ¬(¬Sel & ¬a)
+      And(a=notSel,b=notA,out=andNotSelNotA);
+      Not(in=andNotSelNotA, out=notAndNotSelNotA);
+
+      // notAndSelNotB & notAndNotSelNotA
+      And(a=notAndSelNotB, b=notAndNotSelNotA, out=out);
 }
