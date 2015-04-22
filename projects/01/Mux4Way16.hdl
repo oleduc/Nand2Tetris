@@ -16,10 +16,6 @@ CHIP Mux4Way16 {
     OUT out[16];
 
     PARTS:
-      // Classical: ((¬S1 & ¬S2) ⊃ a) & ((¬S1 & S2) ⊃ b) & ((S1 & ¬S2) ⊃ c) & ((S1 & S2) ⊃ d)
-      // Without implication -> (P ⊃ Q) ≡ ¬(P & ¬Q)
-      // ¬((¬S1 & ¬S2) & ¬a) & ¬((¬S1 & S2) & ¬b) & ¬((S1 & ¬S2) & ¬c) & ¬((S1 & S2) & ¬d)
-
       // First bit: sel[1]
       // Second bit: sel[0]
       // Why?
